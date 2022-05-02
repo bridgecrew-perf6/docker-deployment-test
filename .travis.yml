@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t web-app .
+
+script:
+  - docker run -e CI=true web-app npm run test
